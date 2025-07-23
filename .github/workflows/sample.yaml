@@ -40,11 +40,11 @@ jobs:
 
       - name: Commit and push updated values.yaml
         env:
-          PAT: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git remote set-url origin https://kiran0113:${PAT}@github.com/kiran0113/sample2.git
-          git add .
+          git add helm/sample/values.yaml
           git commit -m "Update image tag to ${SHORT_SHA}" || echo "No changes"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git push origin main
