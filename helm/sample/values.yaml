@@ -6,8 +6,8 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: NodePort
+  port: 30080
 
 containerPort: 3000
 
