@@ -39,8 +39,12 @@ jobs:
           sed -i "s/tag: .*/tag: ${SHORT_SHA}/" helm/sample/values.yaml
 
       - name: Commit and push updated values.yaml
+        env:
+          PAT: ${{ secrets.PAT }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git commit -am "Update image tag to ${SHORT_SHA}"
-          git push
+          git remote set-url origin https://kiran0113:${PAT}@github.com/kiran0113/sample2.git
+          git add .
+          git commit -m "Update image tag to ${SHORT_SHA}"
+          git push origin main
