@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: kiranyn/sample
-  tag: cd41130
+  tag: 3f7a016
   pullPolicy: IfNotPresent
 
 service:
