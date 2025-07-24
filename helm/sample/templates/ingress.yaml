@@ -4,8 +4,8 @@ kind: Ingress
 metadata:
   name: sample-app
   annotations:
-    {{- with .Values.ingress.annotations }}
-    {{ toYaml . | indent 4 }}
+    {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
   {{- if .Values.ingress.className }}
@@ -26,7 +26,6 @@ spec:
                   number: {{ $.Values.service.port }}
           {{- end }}
     {{- end }}
-
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
