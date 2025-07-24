@@ -8,9 +8,8 @@ image:
 service:
   type: ClusterIP
   port: 80
-  tartgetPort: 3000  
-ports: 
-  - containerPort: 3000
+  tartgetPort: 3000   
+containerPort: 3000
 
 ingress:
   enabled: true
