@@ -11,3 +11,19 @@ service:
 
 containerPort: 3000
 
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod  # Optional: only if using cert-manager for TLS
+  hosts:
+    - host: kiran.kubeace.com         # Replace with your domain
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:                                # Optional: only if using TLS
+    - hosts:
+        - kiran.kubeace.com
+      secretName: sample-app-tls
+
