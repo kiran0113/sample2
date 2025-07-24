@@ -4,7 +4,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: kirannarayan078@gmail.com           # 🔁 Replace with your email
+    email: kirannarayan078@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod
@@ -12,4 +12,5 @@ spec:
       - http01:
           ingress:
             class: nginx
+          
 
